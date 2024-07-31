@@ -8,20 +8,30 @@
         function calculateTrainingTime() {
             // Получение значений из полей ввода
             const totalSoldiers = parseInt(document.getElementById('totalSoldiers').value);
-            const trainingTimePerSoldier = parseInt(document.getElementById('trainingTimePerSoldier').value);
+            const hoursPerSoldier = parseInt(document.getElementById('hoursPerSoldier').value);
+            const minutesPerSoldier = parseInt(document.getElementById('minutesPerSoldier').value);
+            const secondsPerSoldier = parseInt(document.getElementById('secondsPerSoldier').value);
             const soldiersTrainedAtOnce = parseInt(document.getElementById('soldiersTrainedAtOnce').value);
 
             // Проверка на корректность введенных данных
-            if (isNaN(totalSoldiers) || isNaN(trainingTimePerSoldier) || isNaN(soldiersTrainedAtOnce)) {
+            if (isNaN(totalSoldiers) || isNaN(hoursPerSoldier) || isNaN(minutesPerSoldier) || isNaN(secondsPerSoldier) || isNaN(soldiersTrainedAtOnce)) {
                 alert('Пожалуйста, введите корректные числа.');
                 return;
             }
 
-            // Вычисление общего времени обучения
-            const totalTime = Math.ceil(totalSoldiers / soldiersTrainedAtOnce) * trainingTimePerSoldier;
+            // Вычисление времени на обучение одного солдата в часах
+            const trainingTimePerSoldierInHours = hoursPerSoldier + (minutesPerSoldier / 60) + (secondsPerSoldier / 3600);
+
+            // Вычисление общего времени обучения в часах
+            const totalTimeInHours = Math.ceil(totalSoldiers / soldiersTrainedAtOnce) * trainingTimePerSoldierInHours;
+
+            // Перевод общего времени в часы, минуты и секунды
+            const totalHours = Math.floor(totalTimeInHours);
+            const totalMinutes = Math.floor((totalTimeInHours - totalHours) * 60);
+            const totalSeconds = Math.floor((((totalTimeInHours - totalHours) * 60) - totalMinutes) * 60);
 
             // Отображение результата
-            document.getElementById('result').innerText = `Общее время для обучения всех солдат: ${totalTime} часов`;
+            document.getElementById('result').innerText = `Общее время для обучения всех солдат: ${totalHours} часов, ${totalMinutes} минут и ${totalSeconds} секунд`;
         }
     </script>
 </head>
@@ -31,8 +41,10 @@
         <label for="totalSoldiers">Количество солдат для обучения:</label>
         <input type="number" id="totalSoldiers" required><br><br>
 
-        <label for="trainingTimePerSoldier">Время на обучение одного солдата (в часах):</label>
-        <input type="number" id="trainingTimePerSoldier" required><br><br>
+        <label>Время на обучение одного солдата:</label>
+        <input type="number" id="hoursPerSoldier" placeholder="Часы" required>
+        <input type="number" id="minutesPerSoldier" placeholder="Минуты" required>
+        <input type="number" id="secondsPerSoldier" placeholder="Секунды" required><br><br>
 
         <label for="soldiersTrainedAtOnce">Количество солдат, обучаемых одновременно:</label>
         <input type="number" id="soldiersTrainedAtOnce" required><br><br>
