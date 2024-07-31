@@ -1,22 +1,54 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #fff;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+}
+
+.stars, .twinkling {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: transparent;
+    z-index: -1;
+}
+
+.stars {
+    background: url('https://raw.githubusercontent.com/Bartekus/animated-backgrounds/master/star1.png') repeat top center;
+    animation: move-stars 50s linear infinite;
+}
+
+.twinkling {
+    background: url('https://raw.githubusercontent.com/Bartekus/animated-backgrounds/master/twinkling1.png') repeat top center;
+    animation: move-twinkling 100s linear infinite;
+}
+
+@keyframes move-stars {
+    from { background-position: 0 0; }
+    to { background-position: -10000px 5000px; }
+}
+
+@keyframes move-twinkling {
+    from { background-position: 0 0; }
+    to { background-position: -10000px 5000px; }
 }
 
 .container {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 100px auto;
     padding: 20px;
-    background: #fff;
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    text-align: center;
 }
 
 h1 {
-    text-align: center;
     color: #4CAF50;
 }
 
@@ -49,6 +81,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -56,8 +89,6 @@ button:hover {
 }
 
 p#result {
-    text-align: center;
     font-size: 18px;
     font-weight: bold;
-    color: #333;
 }
