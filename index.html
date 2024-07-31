@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Training Soldiers</title>
+    <link rel="stylesheet" href="styles.css">
     <script>
         function calculateTrainingTime() {
             // Получение значений из полей ввода
@@ -36,22 +37,28 @@
     </script>
 </head>
 <body>
-    <h1>Расчет времени на обучение солдат</h1>
-    <form onsubmit="event.preventDefault(); calculateTrainingTime();">
-        <label for="totalSoldiers">Количество солдат для обучения:</label>
-        <input type="number" id="totalSoldiers" required><br><br>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="container">
+        <h1>Расчет времени на обучение солдат</h1>
+        <form onsubmit="event.preventDefault(); calculateTrainingTime();">
+            <label for="totalSoldiers">Количество солдат для обучения:</label>
+            <input type="number" id="totalSoldiers" required><br><br>
 
-        <label>Время на обучение одного солдата:</label>
-        <input type="number" id="hoursPerSoldier" placeholder="Часы" required>
-        <input type="number" id="minutesPerSoldier" placeholder="Минуты" required>
-        <input type="number" id="secondsPerSoldier" placeholder="Секунды" required><br><br>
+            <label>Время на обучение одного солдата:</label>
+            <div class="time-inputs">
+                <input type="number" id="hoursPerSoldier" placeholder="Часы" required>
+                <input type="number" id="minutesPerSoldier" placeholder="Минуты" required>
+                <input type="number" id="secondsPerSoldier" placeholder="Секунды" required>
+            </div><br>
 
-        <label for="soldiersTrainedAtOnce">Количество солдат, обучаемых одновременно:</label>
-        <input type="number" id="soldiersTrainedAtOnce" required><br><br>
+            <label for="soldiersTrainedAtOnce">Количество солдат, обучаемых одновременно:</label>
+            <input type="number" id="soldiersTrainedAtOnce" required><br><br>
 
-        <button type="submit">Рассчитать</button>
-    </form>
+            <button type="submit">Рассчитать</button>
+        </form>
 
-    <p id="result"></p>
+        <p id="result"></p>
+    </div>
 </body>
 </html>
