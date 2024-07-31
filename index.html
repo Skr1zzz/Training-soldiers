@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Soldiers</title>
+    <script>
+        function calculateTrainingTime() {
+            // Получение значений из полей ввода
+            const totalSoldiers = parseInt(document.getElementById('totalSoldiers').value);
+            const trainingTimePerSoldier = parseInt(document.getElementById('trainingTimePerSoldier').value);
+            const soldiersTrainedAtOnce = parseInt(document.getElementById('soldiersTrainedAtOnce').value);
+
+            // Проверка на корректность введенных данных
+            if (isNaN(totalSoldiers) || isNaN(trainingTimePerSoldier) || isNaN(soldiersTrainedAtOnce)) {
+                alert('Пожалуйста, введите корректные числа.');
+                return;
+            }
+
+            // Вычисление общего времени обучения
+            const totalTime = Math.ceil(totalSoldiers / soldiersTrainedAtOnce) * trainingTimePerSoldier;
+
+            // Отображение результата
+            document.getElementById('result').innerText = `Общее время для обучения всех солдат: ${totalTime} часов`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Расчет времени на обучение солдат</h1>
+    <form onsubmit="event.preventDefault(); calculateTrainingTime();">
+        <label for="totalSoldiers">Количество солдат для обучения:</label>
+        <input type="number" id="totalSoldiers" required><br><br>
+
+        <label for="trainingTimePerSoldier">Время на обучение одного солдата (в часах):</label>
+        <input type="number" id="trainingTimePerSoldier" required><br><br>
+
+        <label for="soldiersTrainedAtOnce">Количество солдат, обучаемых одновременно:</label>
+        <input type="number" id="soldiersTrainedAtOnce" required><br><br>
+
+        <button type="submit">Рассчитать</button>
+    </form>
+
+    <p id="result"></p>
+</body>
+</html>
